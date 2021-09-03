@@ -12,8 +12,9 @@ namespace GyroScope.Data.Treats
     /// </summary>
     public class AquariusIce
     {
+        public string Name { get; }
         /// <summary>
-        /// The size of this Aquarius Ice
+        /// The size of this Aquarius Ice    
         /// \
         /// </summary>
         public Size Size { get; set; }
