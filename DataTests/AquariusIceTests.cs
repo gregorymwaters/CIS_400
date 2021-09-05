@@ -13,28 +13,6 @@ namespace GyroScope.DataTests
     /// </summary>
     public class AquariusIceTests
     {
-        [Fact]
-        public void DefaultChicken()
-        {
-            var side = new AresFries();
-            Assert.Equal(Size.Small, side.Size);
-            side.Size = Size.Medium;
-            Assert.Equal(Size.Medium, side.Size);
-            var side1 = new GeminiStuffedGrapeLeaves();
-            Assert.Equal(Size.Small, side1.Size);
-            var side2 = new SagittariusGreekSalad();
-            Assert.Equal(Size.Small, side2.Size);
-            var side3 = new TarusTabuleh();
-            Assert.Equal(Size.Small, side3.Size);
-            var gyro = new VirgoClassicGyro();
-            Assert.True(gyro.Calories == 593);
-            Assert.Equal(DonerMeat.Pork, gyro.Meat);
-            Assert.Empty(gyro.SpecialInstructions);
-            gyro.Onion = false;
-            Assert.NotEmpty(gyro.SpecialInstructions);
-            Assert.IsAssignableFrom<IEnumerable<string>>(gyro.SpecialInstructions);
-            var fish = new PicesFishDish();
-        }
         /// <summary>
         /// Checks default flavor
         /// </summary>
