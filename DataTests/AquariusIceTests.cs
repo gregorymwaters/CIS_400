@@ -1,7 +1,10 @@
 using System;
 using Xunit;
+using System.Collections.Generic;
 using GyroScope.Data.Enums;
 using GyroScope.Data.Treats;
+using GyroScope.Data.Entrees;
+using GyroScope.Data.Sides;
 
 namespace GyroScope.DataTests
 {
