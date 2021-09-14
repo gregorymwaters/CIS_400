@@ -7,7 +7,7 @@ using GyroScope.Data.Enums;
 
 namespace GyroScope.Data.Sides
 {
-    public class GeminiStuffedGrapeLeaves
+    public class GeminiStuffedGrapeLeaves : Side
     {
         /// <summary>
         /// Establishing and initializing private backing
@@ -28,7 +28,7 @@ namespace GyroScope.Data.Sides
         /// <summary>
         /// The Size of Gemini Stuffed Grape Leaves
         /// </summary>
-        public Size Size
+        public override Size Size
         {
             get { return size; }
             set { size = value; }
@@ -37,7 +37,7 @@ namespace GyroScope.Data.Sides
         /// <summary>
         /// The Price of Gemini Stuffed Grape Leaves
         /// </summary>
-        public decimal Price
+        public override decimal Price
         {
             get
             {
@@ -58,7 +58,7 @@ namespace GyroScope.Data.Sides
         /// <summary>
         /// The Calories of Gemini Stuffed Grape Leaves
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
