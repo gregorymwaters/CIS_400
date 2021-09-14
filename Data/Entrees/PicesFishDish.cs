@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace GyroScope.Data.Entrees
 {
-    public class PicesFishDish
+    public class PiscesFishDish : Entree
     {
-        public decimal Price { get { return 5.99m; } }
-        public uint Calories { get { return 726; } }
-        public IEnumerable<string> SpecialInstructions { get { return new List<string>(); } }
+        public override decimal Price { get { return 5.99m; } }
+        public override uint Calories { get { return 726; } }
+        public override IEnumerable<string> SpecialInstructions { get { return new List<string>(); } }
 
     }
 }

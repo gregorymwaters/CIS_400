@@ -10,7 +10,7 @@ namespace GyroScope.Data.Treats
     /// <summary>
     /// A class representing "Aquarius Ice" - an itialian iced soda
     /// </summary>
-    public class AquariusIce
+    public class AquariusIce : Treat
     {
         public string Name { get; }
 
@@ -27,7 +27,7 @@ namespace GyroScope.Data.Treats
         /// <summary>
         /// The calories of this Aquarius Ice
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -50,7 +50,7 @@ namespace GyroScope.Data.Treats
         /// <summary>
         /// The price of this Aquarius Ice
         /// </summary>
-        public decimal Price 
+        public override decimal Price 
         { 
             get
             {

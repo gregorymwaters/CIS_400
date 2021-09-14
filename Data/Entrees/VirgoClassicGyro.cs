@@ -7,7 +7,7 @@ using GyroScope.Data.Enums;
 
 namespace GyroScope.Data.Entrees
 {
-    public class VirgoClassicGyro
+    public class VirgoClassicGyro : Gyro
     {
         /// <summary>
         /// Establishing and initializing private backing
@@ -25,7 +25,11 @@ namespace GyroScope.Data.Entrees
         private bool tomato = true;
         private bool onion = true;
         private bool lettuce = true;
+        private bool eggplant = false;
+        private bool mintChutney = false;
+        private bool peppers = false;
         private bool tzatziki = true;
+        private bool wingSauce = false;
 
         /// <summary>
         /// Public facing getters and setters
@@ -35,23 +39,30 @@ namespace GyroScope.Data.Entrees
         /// <summary>
         /// The Price of Virgo Classic Gyro
         /// </summary>
-        public decimal Price
+        public override decimal Price
         {
             get { return 5.50m; }
         }
 
-        public bool Pita { get { return pita; } set { pita = value; } }
-        public bool Tomato { get { return tomato; } set { tomato = value; } }
-        public bool Onion { get { return onion; } set { onion = value; } }
-        public bool Lettuce { get { return lettuce; } set { lettuce = value; } }
-        public bool Tzatziki { get { return tzatziki; } set { tzatziki = value; } }
+        /// <summary>
+        /// Override getters and setters for all optional toppings
+        /// </summary>
+        public override bool Pita { get { return pita; } set { pita = value; } }
+        public override bool Tomato { get { return tomato; } set { tomato = value; } }
+        public override bool Onion { get { return onion; } set { onion = value; } }
+        public override bool Lettuce { get { return lettuce; } set { lettuce = value; } }
+        public override bool Eggplant { get { return eggplant; } set { eggplant = value; } }
+        public override bool MintChutney { get { return mintChutney; } set { mintChutney = value; } }
+        public override bool Peppers { get { return peppers; } set { peppers = value; } }
+        public override bool Tzatziki { get { return tzatziki; } set { tzatziki = value; } }
+        public override bool WingSauce { get { return wingSauce; } set { wingSauce = value; } }
 
 
         /// <summary>
         /// The Calories of Virgo Classic Gyro
         /// Default is 593
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -76,6 +87,10 @@ namespace GyroScope.Data.Entrees
                 if (onion) calories += 30;
                 if (lettuce) calories += 54;
                 if (tzatziki) calories += 30;
+                if (peppers) calories += 33;
+                if (wingSauce) calories += 15;
+                if (eggplant) calories += 47;
+                if (mintChutney) calories += 10;
                 return calories;
             }
         }
@@ -83,13 +98,13 @@ namespace GyroScope.Data.Entrees
         /// <summary>
         /// The Meat choice of Virgo Classic Gyro
         /// </summary>
-        public DonerMeat Meat { get { return meat; } set { meat = value; } }
+        public override DonerMeat Meat { get { return meat; } set { meat = value; } }
 
 
         /// <summary>
         /// The SpecialInstructions of Virgo Classic Gyro
         /// </summary>
-        public IEnumerable<string> SpecialInstructions
+        public override IEnumerable<string> SpecialInstructions
         {
             get
             {
@@ -98,9 +113,13 @@ namespace GyroScope.Data.Entrees
                 if (!tomato) specialInstructions.Add("Hold Tomato");
                 if (!onion) specialInstructions.Add("Hold Onion");
                 if (!lettuce) specialInstructions.Add("Hold Lettuce");
+                if (eggplant) specialInstructions.Add("Add Eggplant");
+                if (mintChutney) specialInstructions.Add("Add Mint Chutney");
                 if (!tzatziki) specialInstructions.Add("Hold Tzatziki");
+                if (peppers) specialInstructions.Add("Add Peppers");
+                if (wingSauce) specialInstructions.Add("Add Wing Sauce");
 
-                switch(meat)
+                switch (meat)
                 {
                     case DonerMeat.Beef:
                         specialInstructions.Add("Use Beef");
