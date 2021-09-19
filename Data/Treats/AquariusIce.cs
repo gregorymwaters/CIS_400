@@ -12,6 +12,9 @@ namespace GyroScope.Data.Treats
     /// </summary>
     public class AquariusIce : Treat
     {
+        /// <summary>
+        /// The name of AquariousIce object instance
+        /// </summary>
         public string Name { get; }
 
         /// <summary>
