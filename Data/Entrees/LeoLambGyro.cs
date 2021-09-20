@@ -7,6 +7,9 @@ using GyroScope.Data.Enums;
 
 namespace GyroScope.Data.Entrees
 {
+    /// <summary>
+    /// Public class for menu item LeoLambGyro inherrites from Gyro parent class
+    /// </summary>
     public class LeoLambGyro : Gyro
     {
         /// <summary>

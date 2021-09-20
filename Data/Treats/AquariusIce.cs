@@ -15,7 +15,49 @@ namespace GyroScope.Data.Treats
         /// <summary>
         /// The name of AquariousIce object instance
         /// </summary>
-        public string Name { get; }
+        public string Name
+        {
+            get
+            {
+                string name = "";
+                switch(Size)
+                {
+                    case Size.Small:
+                        name += "Small ";
+                        break;
+                    case Size.Medium:
+                        name += "Medium ";
+                        break;
+                    case Size.Large:
+                        name += "Large ";
+                        break;
+                }
+                switch(Flavor)
+                {
+                    case AquariusIceFlavor.Lemon:
+                        name += "Lemon ";
+                        break;
+                    case AquariusIceFlavor.Orange:
+                        name += "Orange ";
+                        break;
+                    case AquariusIceFlavor.BlueRaspberry:
+                        name += "BlueRaspberry ";
+                        break;
+                    case AquariusIceFlavor.Watermellon:
+                        name += "Watermellon ";
+                        break;
+                    case AquariusIceFlavor.Strawberry:
+                        name += "Strawberry ";
+                        break;
+                    case AquariusIceFlavor.Mango:
+                        name += "Mango ";
+                        break;
+                }
+                name += "Aquarius Ice";
+                return name;
+            }
+        }
+            
 
         /// <summary>
         /// The size of this Aquarius Ice    

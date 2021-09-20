@@ -7,7 +7,7 @@ using GyroScope.Data.Enums;
 
 namespace GyroScope.Data.Sides
 {
-    public class TarusTabuleh : Side
+    public class TaurusTabuleh : Side
     {
         /// <summary>
         /// Establishing and initializing private backing
