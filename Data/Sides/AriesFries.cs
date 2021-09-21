@@ -7,7 +7,7 @@ using GyroScope.Data.Enums;
 
 namespace GyroScope.Data.Sides
 {
-    public class TarusTabuleh : Side
+    public class AriesFries : Side
     {
         /// <summary>
         /// Establishing and initializing private backing
@@ -16,7 +16,7 @@ namespace GyroScope.Data.Sides
         /// 
 
         /// <summary>
-        /// The default Size of Tarus Tabuleh
+        /// The default Size of Aries Fries
         /// </summary>
         private Size size = Size.Small;
 
@@ -26,7 +26,7 @@ namespace GyroScope.Data.Sides
 
 
         /// <summary>
-        /// The Size of Tarus Tabuleh
+        /// The Size of Ares Fries
         /// </summary>
         public override Size Size
         {
@@ -35,7 +35,7 @@ namespace GyroScope.Data.Sides
         }
 
         /// <summary>
-        /// The Price of Tarus Tabuleh
+        /// The Price of Ares Fries
         /// </summary>
         public override decimal Price
         {
@@ -56,8 +56,9 @@ namespace GyroScope.Data.Sides
         }
 
         /// <summary>
-        /// The Calories of Tarus Tabuleh
+        /// The Calories of Ares Fries
         /// </summary>
+
         public override uint Calories
         {
             get
@@ -65,11 +66,11 @@ namespace GyroScope.Data.Sides
                 switch (Size)
                 {
                     case Size.Small:
-                        return 124;
+                        return 304;
                     case Size.Medium:
-                        return 186;
+                        return 456;
                     case Size.Large:
-                        return 248;
+                        return 608;
                     default:
                         throw new NotImplementedException();
                 }

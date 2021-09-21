@@ -18,9 +18,17 @@ namespace GyroScope.Data.Drinks
 
         /// <summary>
         /// public getters and setters for private variables
+        /// public variable for Flavor of type LibraLibationFlavor Enum
         /// </summary>
         public LibraLibationFlavor Flavor { get { return flavor; } set { flavor = value; } }
+
+        /// <summary>
+        /// boolian to keep track of Sparkling property either Aprkling or Still
+        /// </summary>
         public bool Sparkling { get { return sparkling; } set { sparkling = value; } }
+        /// <summary>
+        /// Override Price getter inherited from Drink abstract class
+        /// </summary>
         public override decimal Price { get { return 1.00m; } }
 
         /// <summary>
