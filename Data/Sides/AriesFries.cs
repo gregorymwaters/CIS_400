@@ -16,7 +16,7 @@ namespace GyroScope.Data.Sides
         /// 
 
         /// <summary>
-        /// The default Size of Ares Fries
+        /// The default Size of Aries Fries
         /// </summary>
         private Size size = Size.Small;
 
