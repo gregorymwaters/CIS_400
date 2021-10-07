@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{46841929-758D-4136-A9DB-65FE6D3FB9C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTests", "DataTests\DataTests.csproj", "{3B39FF60-50B1-441A-979E-196DD55723AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataTests", "DataTests\DataTests.csproj", "{3B39FF60-50B1-441A-979E-196DD55723AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSale", "PointOfSale\PointOfSale.csproj", "{3366E24C-2A95-41FC-9E2F-0A8FBC8F08AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3B39FF60-50B1-441A-979E-196DD55723AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B39FF60-50B1-441A-979E-196DD55723AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B39FF60-50B1-441A-979E-196DD55723AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3366E24C-2A95-41FC-9E2F-0A8FBC8F08AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3366E24C-2A95-41FC-9E2F-0A8FBC8F08AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3366E24C-2A95-41FC-9E2F-0A8FBC8F08AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3366E24C-2A95-41FC-9E2F-0A8FBC8F08AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
