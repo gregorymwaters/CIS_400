@@ -7,7 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataTests", "DataTests\DataTests.csproj", "{3B39FF60-50B1-441A-979E-196DD55723AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSale", "PointOfSale\PointOfSale.csproj", "{3366E24C-2A95-41FC-9E2F-0A8FBC8F08AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PointOfSale", "PointOfSale\PointOfSale.csproj", "{3366E24C-2A95-41FC-9E2F-0A8FBC8F08AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{20E77648-B1E3-4D32-AEDA-2AA0F162491B}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\GyroScopeUML.pdf = Documentation\GyroScopeUML.pdf
+		Documentation\WPFUML.pdf = Documentation\WPFUML.pdf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
