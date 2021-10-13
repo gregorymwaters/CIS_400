@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GyroScope.Data.Enums;
+using System.ComponentModel;
 
 namespace GyroScope.Data.Entrees
 {
@@ -11,7 +12,7 @@ namespace GyroScope.Data.Entrees
     /// Abstract base class for all Gyro type Entree objects on the menu
     /// Inherits from Entree base class
     /// </summary>
-    public abstract class Gyro : Entree
+    public abstract class Gyro : Entree, INotifyPropertyChanged
     {
         /// <summary>
         /// Special Instructions All Ingredients

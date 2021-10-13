@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace GyroScope.Data.Drinks
 {
     /// <summary>
     /// Class definition for Capricorn Mountain Tea
     /// </summary>
-    public class CapricornMountainTea : Drink
+    public class CapricornMountainTea : Drink, INotifyPropertyChanged
     {
         /// <summary>
         /// private backing variable for default setting
@@ -40,12 +41,14 @@ namespace GyroScope.Data.Drinks
         /// <summary>
         /// Getter and setter for private backing variable honey
         /// </summary>
-        public bool Honey { get { return honey; } set { honey = value; } }
+        public bool Honey { get { return honey; } set { honey = value; PropertyChanged?.Invoke(Honey, new PropertyChangedEventArgs("Honey Changed")); } }
 
         public override string Name
         {
             get { return "Capricorn Mountain Tea"; }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public override string ToString()
         {

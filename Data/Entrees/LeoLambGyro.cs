@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GyroScope.Data.Enums;
+using System.ComponentModel;
 
 namespace GyroScope.Data.Entrees
 {
     /// <summary>
     /// Public class for menu item LeoLambGyro inherrites from Gyro parent class
     /// </summary>
-    public class LeoLambGyro : Gyro
+    public class LeoLambGyro : Gyro, INotifyPropertyChanged
     {
         /// <summary>
         /// Establishing and initializing private backing

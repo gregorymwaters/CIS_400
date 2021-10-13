@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GyroScope.Data.Enums;
+using System.ComponentModel;
 
 namespace GyroScope.Data.Treats
 {
     /// <summary>
     /// A class representing "Aquarius Ice" - an itialian iced soda
     /// </summary>
-    public class AquariusIce : Treat
+    public class AquariusIce : Treat, INotifyPropertyChanged
     {
         /// <summary>
         /// The name of AquariousIce object instance
@@ -62,12 +63,12 @@ namespace GyroScope.Data.Treats
         /// <summary>
         /// The size of this Aquarius Ice    
         /// </summary>
-        public Size Size { get; set; }
+        public Size Size { get { return Size; } set { Size = value; PropertyChanged?.Invoke(Size, new PropertyChangedEventArgs("Size Changed")); } }
 
         /// <summary>
         /// The flavor of this Aquarius Ice
         /// </summary>
-        public AquariusIceFlavor Flavor { get; set; }
+        public AquariusIceFlavor Flavor { get { return Flavor; } set { PropertyChanged?.Invoke(Flavor, new PropertyChangedEventArgs("Flavor Changed")); } }
 
         /// <summary>
         /// The calories of this Aquarius Ice
@@ -112,6 +113,8 @@ namespace GyroScope.Data.Treats
                 }
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public override string ToString()
         {

@@ -29,6 +29,10 @@ namespace PointOfSale.ItemCustomizations
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Adds Item to temporary variable for customization
+        /// </summary>
+        /// <param name="side"></param>
         public void AddItem(Side side)
         {
             Side = side;
@@ -46,6 +50,11 @@ namespace PointOfSale.ItemCustomizations
             }
         }
 
+        /// <summary>
+        /// Raises event on customization and attaches instance to event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FinishItem(object sender, RoutedEventArgs e)
         {
             if ((bool)SmallSideRadio.IsChecked) Side.Size = GyroScope.Data.Enums.Size.Small;

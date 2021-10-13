@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GyroScope.Data.Enums;
+using System.ComponentModel;
 
 namespace GyroScope.Data.Drinks
 {
-    public class LibraLibation : Drink
+    public class LibraLibation : Drink, INotifyPropertyChanged
     {
         /// <summary>
         /// Private backing variables for LibraLibation
@@ -20,12 +21,12 @@ namespace GyroScope.Data.Drinks
         /// public getters and setters for private variables
         /// public variable for Flavor of type LibraLibationFlavor Enum
         /// </summary>
-        public LibraLibationFlavor Flavor { get { return flavor; } set { flavor = value; } }
+        public LibraLibationFlavor Flavor { get { return flavor; } set { flavor = value; PropertyChanged?.Invoke(Flavor, new PropertyChangedEventArgs("Flavor Changed")); } }
 
         /// <summary>
         /// boolian to keep track of Sparkling property either Aprkling or Still
         /// </summary>
-        public bool Sparkling { get { return sparkling; } set { sparkling = value; } }
+        public bool Sparkling { get { return sparkling; } set { sparkling = value; PropertyChanged?.Invoke(Sparkling, new PropertyChangedEventArgs("Sparkling Changed")); } }
         /// <summary>
         /// Override Price getter inherited from Drink abstract class
         /// </summary>
@@ -89,6 +90,8 @@ namespace GyroScope.Data.Drinks
                 return name;
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Override of default ToString Method

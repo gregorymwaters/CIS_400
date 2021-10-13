@@ -22,6 +22,9 @@ namespace PointOfSale.ItemCustomizations
     /// </summary>
     public partial class TreatsCustomization : UserControl
     {
+        /// <summary>
+        /// backing variables for temporary storage
+        /// </summary>
         public AquariusIce Ice;
         public event EventHandler FinishAI;
         public TreatsCustomization()
@@ -29,6 +32,10 @@ namespace PointOfSale.ItemCustomizations
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Initializaes the customization window with correct items ticked
+        /// </summary>
+        /// <param name="ice"></param>
         public void AddItem(AquariusIce ice)
         {
             Ice = ice;
@@ -67,6 +74,12 @@ namespace PointOfSale.ItemCustomizations
             }
         }
 
+        /// <summary>
+        /// Pulls customizations from window and applies to temp object
+        /// raises event and attaches customized item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FinishItem(object sender, RoutedEventArgs e)
         {
             if ((bool)BlueRaspberryRadio.IsChecked) Ice.Flavor = AquariusIceFlavor.BlueRaspberry;

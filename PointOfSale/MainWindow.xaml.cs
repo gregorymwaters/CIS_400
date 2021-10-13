@@ -27,6 +27,9 @@ namespace PointOfSale
         public MenuItemSelectionControl Menu;
         public OrderSummaryControl Order;
 
+        /// <summary>
+        /// Main Window hook, establishes control context for display
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -38,10 +41,49 @@ namespace PointOfSale
             
         }
 
-
+        /// <summary>
+        /// Method for changing control based on actions elsewhere in the design
+        /// </summary>
+        /// <param name="change"></param>
         public void ChangeControl(UIElement change)
         {
             currentControl.Content = change;
+        }
+
+        /// <summary>
+        /// Functionality for "Back To Menu" Button, simply changes UI contrl
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BackToMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            currentControl.Content = Menu;
+        }
+
+        /// <summary>
+        /// Functionality for Cancel Order button
+        /// Updates master OrderItems list and OrderSummary display and order number
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CancelOrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            Menu.OrderItems.Clear();
+            OrderSummary.CancelOrder();
+            currentControl.Content = Menu;
+        }
+
+        /// <summary>
+        /// Functionality for Complete Order button
+        /// Updates Order number and resets master OrderITems list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CompleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Menu.CompleteOrder();
+            OrderSummary.CompleteOrder();
+            currentControl.Content = Menu;
         }
     }
 }

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GyroScope.Data.Enums;
+using System.ComponentModel;
 
 namespace GyroScope.Data.Sides
 {
-    public class TaurusTabuleh : Side
+    public class TaurusTabuleh : Side, INotifyPropertyChanged
     {
         /// <summary>
         /// Establishing and initializing private backing
@@ -31,7 +32,7 @@ namespace GyroScope.Data.Sides
         public override Size Size
         {
             get { return size; }
-            set { size = value; }
+            set { size = value; PropertyChanged?.Invoke(Size, new PropertyChangedEventArgs("Size Changed")); }
         }
 
         /// <summary>
@@ -96,6 +97,8 @@ namespace GyroScope.Data.Sides
                 }
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// ToString override

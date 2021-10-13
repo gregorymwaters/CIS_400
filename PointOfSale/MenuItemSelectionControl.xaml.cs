@@ -34,7 +34,7 @@ namespace PointOfSale
         TeaCustomization tc;
         TreatsCustomization Tc;
         MainWindow mainWindow;
-        List<object> OrderItems = new List<object>();
+        public List<object> OrderItems = new List<object>();
         List<Drink> DrinkOrderItems = new List<Drink>();
         public MenuItemSelectionControl()
         {
@@ -43,9 +43,13 @@ namespace PointOfSale
             gc.FinishGyro += OnFinishItem;
         }
 
+        /// <summary>
+        /// Constructor that takes in MainWindow to allow for switching of user controls
+        /// </summary>
+        /// <param name="main"></param>
         public MenuItemSelectionControl(MainWindow main)
         {
-            
+            ///Instancing each of the customization controls
             gc = new GyroCustomization();
             llc = new LibraLibationCustomization();
             sc = new SideCustomization();
@@ -53,6 +57,8 @@ namespace PointOfSale
             Tc = new TreatsCustomization();
             mainWindow = main;
             InitializeComponent();
+
+            ///Adding event listeners to each customization control
             gc.FinishGyro += OnFinishItem;
             llc.FinishLL += OnFinishItem;
             tc.FinishTea += OnFinishItem;
@@ -62,6 +68,11 @@ namespace PointOfSale
 
         }
 
+        /// <summary>
+        /// Click event handler for Leo Lamb Gyro Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LeoButton_Click(object sender, RoutedEventArgs e)
         {
             LeoLambGyro leoOrder = new LeoLambGyro();
@@ -70,6 +81,11 @@ namespace PointOfSale
             mainWindow.ChangeControl(gc);
         }
 
+        /// <summary>
+        /// Click event handler for Scorpio Spicy Gyro Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ScorpioButton_Click(object sender, RoutedEventArgs e)
         {
             ScorpioSpicyGyro scorpioOrder = new ScorpioSpicyGyro();
@@ -78,6 +94,11 @@ namespace PointOfSale
             mainWindow.ChangeControl(gc);
         }
 
+        /// <summary>
+        /// Click event handler for Virgo Classic Gyro Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VirgoButton_Click(object sender, RoutedEventArgs e)
         {
             VirgoClassicGyro virgoOrder = new VirgoClassicGyro();
@@ -86,6 +107,11 @@ namespace PointOfSale
             mainWindow.ChangeControl(gc);
         }
 
+        /// <summary>
+        /// Click event handler for Pisces Fish Dish Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PicesButton_Click(object sender, RoutedEventArgs e)
         {
             PiscesFishDish picesOrder = new PiscesFishDish();
@@ -93,6 +119,11 @@ namespace PointOfSale
             PropertyChanged?.Invoke(OrderItems, new PropertyChangedEventArgs("FishOrderItems"));
         }
 
+        /// <summary>
+        /// Click event handler for Aries Fries Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AriesButton_Click(object sender, RoutedEventArgs e)
         {
             AriesFries ariesOrder = new AriesFries();
@@ -101,6 +132,11 @@ namespace PointOfSale
             mainWindow.ChangeControl(sc);
         }
 
+        /// <summary>
+        /// Click event handler for Gemini Stuffed Grape Leaves Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GeminiButton_Click(object sender, RoutedEventArgs e)
         {
             GeminiStuffedGrapeLeaves geminiOrder = new GeminiStuffedGrapeLeaves();
@@ -109,6 +145,11 @@ namespace PointOfSale
             mainWindow.ChangeControl(sc);
         }
 
+        /// <summary>
+        /// Click event handler for Sagittarius Greek Salad Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SagitButton_Click(object sender, RoutedEventArgs e)
         {
             SagittariusGreekSalad sagitOrder = new SagittariusGreekSalad();
@@ -117,6 +158,11 @@ namespace PointOfSale
             mainWindow.ChangeControl(sc);
         }
 
+        /// <summary>
+        /// Click event handler for Taurus Tabuleg Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TarusButton_Click(object sender, RoutedEventArgs e)
         {
             TaurusTabuleh taurusOrder = new TaurusTabuleh();
@@ -125,6 +171,11 @@ namespace PointOfSale
             mainWindow.ChangeControl(sc);
         }
 
+        /// <summary>
+        /// Click event handler for Aquarius Ice Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AquariusButton_Click(object sender, RoutedEventArgs e)
         {
             AquariusIce aquariusOrder = new AquariusIce();
@@ -133,6 +184,11 @@ namespace PointOfSale
             mainWindow.ChangeControl(Tc);
         }
 
+        /// <summary>
+        /// Click event handler for Cancer Halvla Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CancerButton_Click(object sender, RoutedEventArgs e)
         {
             CancerHalvaCake cancerOrder = new CancerHalvaCake();
@@ -140,6 +196,11 @@ namespace PointOfSale
             PropertyChanged?.Invoke(OrderItems, new PropertyChangedEventArgs("CancerOrderItems"));
         }
 
+        /// <summary>
+        /// Click event handler for Libra Libation Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LibraButton_Click(object sender, RoutedEventArgs e)
         {
             LibraLibation libraOrder = new LibraLibation();
@@ -148,7 +209,11 @@ namespace PointOfSale
             mainWindow.ChangeControl(llc);
         }
 
-
+        /// <summary>
+        /// Click event handler for Capricorn Moutain Tea Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CapricornButton_Click(object sender, RoutedEventArgs e)
         {
             CapricornMountainTea capricornOrder = new CapricornMountainTea();
@@ -158,7 +223,12 @@ namespace PointOfSale
         }
 
 
-
+        /// <summary>
+        /// Event handler for "Finish Item" button found within each customization control
+        /// Raises property changed event for changes to the master order list OrderItems
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void OnFinishItem(object sender, EventArgs e)
         {
             if(sender is GyroCustomization _gc)
@@ -192,6 +262,11 @@ namespace PointOfSale
             }
 
             mainWindow.ChangeControl(this);
+        }
+
+        public void CompleteOrder()
+        {
+            OrderItems.Clear();
         }
 
        

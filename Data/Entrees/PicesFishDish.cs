@@ -13,6 +13,7 @@ namespace GyroScope.Data.Entrees
         public override IEnumerable<string> SpecialInstructions { get { return new List<string>(); } }
 
         public override string Name {get {return "Pisces Fish Dish";} }
+        public override string ToString() { return "Pisces Fish Dish"; }
 
     }
 }

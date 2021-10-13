@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GyroScope.Data.Enums;
+using System.ComponentModel;
 
 namespace GyroScope.Data.Entrees
 {
-    public class VirgoClassicGyro : Gyro
+    public class VirgoClassicGyro : Gyro, INotifyPropertyChanged
     {
         /// <summary>
         /// Establishing and initializing private backing

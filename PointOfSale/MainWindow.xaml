@@ -55,9 +55,9 @@
 
 
 		<!--Definitions of control buttons-->
-		<Button Name="CancelButton" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2">Cancel Order</Button>
-		<Button Name="SelectItemsButton" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2">Select Items</Button>
-		<Button Name="CompleteButton" Grid.Column="4" Grid.Row="6" Grid.ColumnSpan="2">Complete Order</Button>
+		<Button Name="CancelButton" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" Click="BackToMenuButton_Click">Back To Menu</Button>
+		<Button Name="SelectItemsButton" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" Click="CancelOrderButton_Click">Cancel Order</Button>
+		<Button Name="CompleteButton" Grid.Column="4" Grid.Row="6" Grid.ColumnSpan="2" Click="CompleteButton_Click">Complete Order</Button>
 
 	</Grid>
 </Window>
