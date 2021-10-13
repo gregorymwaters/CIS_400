@@ -12,19 +12,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using GyroScope.Data.Entrees;
+using GyroScope.Data.Drinks;
+using GyroScope.Data.Sides;
+using GyroScope.Data.Treats;
+using GyroScope.Data.Enums;
 
 namespace PointOfSale
 {
     /// <summary>
     /// Interaction logic for OrderSummaryControl.xaml
     /// </summary>
-    public partial class OrderSummaryControl : UserControl
+    public partial class OrderSummaryControl : UserControl, INotifyPropertyChanged
     {
         /// <summary>
         /// Private testing variables to ensure behavior
         /// First is populating List property
         /// </summary>
-        private List<string> Test = new List<string> { "Test1", "Test2" };
+        private List<string> Order = new List<string>();
+        private decimal Total = 0.0m;
 
         /// <summary>
         /// Stand in private variable for orderNumber integer
@@ -36,6 +43,8 @@ namespace PointOfSale
         /// </summary>
         private string time = DateTime.Now.ToShortTimeString();
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Main constructor of OrderSummaryControl class
         /// Calls test method TextPopulate() for functionality testing
@@ -43,6 +52,8 @@ namespace PointOfSale
         public OrderSummaryControl()
         {
             InitializeComponent();
+            this.DataContext = this;
+            PropertyChanged += OnPropertyChanged;
             TextPopulate();
         }
 
@@ -51,8 +62,52 @@ namespace PointOfSale
         /// </summary>
         public void TextPopulate()
         {
-            OrderTextBox.ItemsSource = Test;
-            OrderNumberBox.Text = "Order Number " + orderNumTest + "\n" + time;
+            OrderNumberBox.Text = "Order Number " + orderNumTest + "\n" + DateTime.Now.ToShortTimeString(); 
+            TotalTextBox.Items.Add("SubTotal " + Total);
+        }
+
+        public void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            string spacer = "    ";
+            OrderTextBox.Items.Clear();
+            TotalTextBox.Items.Clear();
+            if (sender is IEnumerable<object> list)
+            {
+                Total = 0.0m;
+                foreach (object x in list)
+                {         
+                    if(x is Entree entree )
+                    {
+                        OrderTextBox.Items.Add(entree.Name);
+                        Total += entree.Price;
+                        for(int i = 0;  i < entree.SpecialInstructions.Count(); i++)
+                        {
+                            OrderTextBox.Items.Add(spacer + entree.SpecialInstructions.ElementAt(i));
+                        }
+                    }
+
+                    if (x is Drink drink)
+                    {
+                        Total += drink.Price;
+                        OrderTextBox.Items.Add(drink.Name);
+                    }
+
+                    if (x is Side side)
+                    {
+                        Total += side.Price;
+                        OrderTextBox.Items.Add(side.Name);
+                    }
+
+                    if(x is Treat treat)
+                    {
+                        Total += treat.Price;
+                        OrderTextBox.Items.Add(treat.Name);
+                    }
+                }
+            }
+
+
+            TextPopulate();
         }
     }
 }

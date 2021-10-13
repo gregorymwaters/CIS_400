@@ -20,5 +20,7 @@ namespace GyroScope.Data.Treats
         /// Abstract getter for Claories from an object
         /// </summary>
         public abstract uint Calories { get; }
+
+        public abstract string Name { get; }
     }
 }

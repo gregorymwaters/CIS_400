@@ -19,6 +19,7 @@
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
 			<ColumnDefinition/>
+			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 		<ListBox Grid.Column="1">
 			<RadioButton GroupName="TreatFlavorCustom" Margin="10,10" Name="LemonRadio">Lemon</RadioButton>
@@ -26,11 +27,13 @@
 			<RadioButton GroupName="TreatFlavorCustom" Margin="10,10" Name="WatermelonRadio">Watermelon</RadioButton>
 			<RadioButton GroupName="TreatFlavorCustom" Margin="10,10" Name="BlueRaspberryRadio">Blue Raspberry</RadioButton>
 			<RadioButton GroupName="TreatFlavorCustom" Margin="10,10" Name="MangoRadio">Mango</RadioButton>
+			<RadioButton GroupName="TreatFlavorCustom" Margin="10,10" Name="StrawberryRadio">Strawberry</RadioButton>
 		</ListBox>
 		<ListBox>
 			<RadioButton GroupName="TreatSizeCustom" Margin="10,10" Name="SmallSideRadio">Small</RadioButton>
 			<RadioButton GroupName="TreatSizeCustom" Margin="10,10" Name="MediumSideRadio">Medium</RadioButton>
 			<RadioButton GroupName="TreatSizeCustom" Margin="10,10" Name="LargeSideRadio">Large</RadioButton>
 		</ListBox>
+		<Button Grid.Column="3" Name="AddItemButton" Click="FinishItem">Finish Item</Button>
 	</Grid>
 </UserControl>

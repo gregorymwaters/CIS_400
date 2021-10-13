@@ -15,7 +15,7 @@ namespace GyroScope.Data.Treats
         /// <summary>
         /// The name of AquariousIce object instance
         /// </summary>
-        public string Name
+        public override string Name
         {
             get
             {
@@ -111,6 +111,11 @@ namespace GyroScope.Data.Treats
                         throw new NotImplementedException($"Unknown Size {Size}");
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

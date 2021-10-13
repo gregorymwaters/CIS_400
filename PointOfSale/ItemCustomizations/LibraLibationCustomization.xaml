@@ -19,7 +19,9 @@
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
 			<ColumnDefinition/>
+			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
+		<Button Grid.Column="3" Name="AddItemButton" Click="FinishItem">Finish Item</Button>
 		<ListBox Grid.Column="0">
 			<RadioButton GroupName="DrinkFlavorCustom" Margin="10,10" Name="OrangeadeRadio">Orangeade</RadioButton>
 			<RadioButton GroupName="DrinkFlavorCustom" Margin="10,10" Name="SourCherryRadio">Sour Cherry</RadioButton>

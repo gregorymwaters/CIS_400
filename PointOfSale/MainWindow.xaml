@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PointOfSale" xmlns:local1="clr-namespace:PointOfSale.ItemCustomizations"
 		mc:Ignorable="d"
-        Title="GyroScope" Height="480" Width="854">
+        Title="GyroScope" Height="1080" Width="1920">
 	
 	<!--Establishing Background Style-->
 	<Window.Background>
@@ -47,8 +47,9 @@
 		</Grid.RowDefinitions>
 		
 		<!--Pulls default instances of other user controls-->
-		<local:OrderSummaryControl Grid.Column="7" Grid.RowSpan="400"/>
-		<local:MenuItemSelectionControl Grid.ColumnSpan="6" Grid.RowSpan="4"/>
+		<local:OrderSummaryControl x:Name="OrderSummary" Grid.Column="7" Grid.RowSpan="400"/>
+		<ContentControl Grid.ColumnSpan="6" Grid.RowSpan="4" Content="{Binding Path=UIcontrol}" Name="currentControl"></ContentControl>
+		<!--local:MenuItemSelectionControl Grid.ColumnSpan="6" Grid.RowSpan="4"/-->
 		<!--local1:GyroCustomization Grid.ColumnSpan="6" Grid.RowSpan="4"/-->
 
 

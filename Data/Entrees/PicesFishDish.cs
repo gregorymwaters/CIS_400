@@ -12,5 +12,7 @@ namespace GyroScope.Data.Entrees
         public override uint Calories { get { return 726; } }
         public override IEnumerable<string> SpecialInstructions { get { return new List<string>(); } }
 
+        public override string Name {get {return "Pisces Fish Dish";} }
+
     }
 }

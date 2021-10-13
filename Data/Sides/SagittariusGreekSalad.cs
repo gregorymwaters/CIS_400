@@ -14,7 +14,7 @@ namespace GyroScope.Data.Sides
         /// variables for the class
         /// </summary>
         /// 
-
+        private string name = "Sagittarius Greek Salad";
         /// <summary>
         /// The default Size of Sagittarius Greek Salad
         /// </summary>
@@ -73,6 +73,46 @@ namespace GyroScope.Data.Sides
                     default:
                         throw new NotImplementedException();
                 }
+            }
+        }
+
+        /// <summary>
+        /// The name of SaggittariusGreekSalad
+        /// </summary>
+        public override string Name
+        {
+            get
+            {
+                switch (Size)
+                {
+                    case Size.Small:
+                        return "Small " + name;
+                    case Size.Medium:
+                        return "Medium " + name;
+                    case Size.Large:
+                        return "Large " + name;
+                    default:
+                        throw new NotImplementedException();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Override of default ToString()
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            switch (Size)
+            {
+                case Size.Small:
+                    return "Small " + name;
+                case Size.Medium:
+                    return "Medium " + name;
+                case Size.Large:
+                    return "Large " + name;
+                default:
+                    throw new NotImplementedException();
             }
         }
     }

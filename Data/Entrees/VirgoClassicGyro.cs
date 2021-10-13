@@ -136,5 +136,9 @@ namespace GyroScope.Data.Entrees
                 return specialInstructions;
             }
         }
+
+        public override string Name { get { return "Virgo Classic Gyro"; } }
+
+        public override string ToString() { return "Virgo Classic Gyro"; }
     }
 }

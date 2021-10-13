@@ -57,7 +57,7 @@ namespace GyroScope.Data.Drinks
         /// <summary>
         /// Populates correct name string for output
         /// </summary>
-        public string Name
+        public override string Name
         {
             get
             {
@@ -89,7 +89,16 @@ namespace GyroScope.Data.Drinks
                 return name;
             }
         }
-        
-            
+
+        /// <summary>
+        /// Override of default ToString Method
+        /// returns Name property
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Name;
+        }
+
     }
 }

@@ -16,9 +16,17 @@
 		</Style>
 	</UserControl.Resources>
 	
-	<ListBox>
-		<RadioButton GroupName="SideSizeCustom" Margin="10,10" Name="SmallSideRadio">Small</RadioButton>
-		<RadioButton GroupName="SideSizeCustom" Margin="10,10" Name="MediumSideRadio">Medium</RadioButton>
-		<RadioButton GroupName="SideSizeCustom" Margin="10,10" Name="LargeSideRadio">Large</RadioButton>
-	</ListBox>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<ListBox>
+			<RadioButton GroupName="SideSizeCustom" Margin="10,10" Name="SmallSideRadio">Small</RadioButton>
+			<RadioButton GroupName="SideSizeCustom" Margin="10,10" Name="MediumSideRadio">Medium</RadioButton>
+			<RadioButton GroupName="SideSizeCustom" Margin="10,10" Name="LargeSideRadio">Large</RadioButton>
+		</ListBox>
+		<Button Grid.Column="3" Name="AddItemButton" Click="FinishItem">Finish Item</Button>
+	</Grid>
 </UserControl>

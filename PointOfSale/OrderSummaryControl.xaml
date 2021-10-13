@@ -14,9 +14,9 @@
 			<RowDefinition Height="2*"/>
 		</Grid.RowDefinitions>
 		<TextBox Name="OrderNumberBox" Grid.Row="0" TextAlignment="Center" FontSize="25" Background="#FF424242" Foreground="#FFC8C8C8">Default</TextBox>
-		<ListBox Name="OrderTextBox" Grid.Row="1" Background="#FF424242" Foreground="#FFC8C8C8" Margin="5">
+		<ListBox Name="OrderTextBox" Grid.Row="1" Background="#FF424242" Foreground="#FFC8C8C8" Margin="5" FontSize="15">
 		</ListBox>
-		<ListBox Name="TotalTextBox" Grid.Row="2" Background="#FF424242" Foreground="#FFC8C8C8"></ListBox>
+		<ListBox Name="TotalTextBox" Grid.Row="2" Background="#FF424242" Foreground="#FFC8C8C8" FontSize="20" HorizontalAlignment="Stretch"></ListBox>
 	</Grid>
 
 

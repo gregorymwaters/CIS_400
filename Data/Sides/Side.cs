@@ -30,5 +30,7 @@ namespace GyroScope.Data.Sides
         /// </summary>
         /// 
         public abstract decimal Price { get; }
+
+        public abstract string Name { get; }
     }
 }

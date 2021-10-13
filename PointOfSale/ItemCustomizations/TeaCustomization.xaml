@@ -15,8 +15,16 @@
 			<Setter Property="FontSize" Value="20"/>
 		</Style>
 	</UserControl.Resources>
-	<ListBox>
-		<RadioButton GroupName="HoneyCustom" Margin="10,10" Name="HoneyRadio">Honey</RadioButton>
-		<RadioButton GroupName="HoneyCustom" Margin="10,10" Name="PlainRadio">No Honey</RadioButton>
-	</ListBox>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<ListBox>
+			<RadioButton GroupName="HoneyCustom" Margin="10,10" Name="HoneyRadio">Honey</RadioButton>
+			<RadioButton GroupName="HoneyCustom" Margin="10,10" Name="PlainRadio">No Honey</RadioButton>
+		</ListBox>
+		<Button Grid.Column="3" Name="AddItemButton" Click="FinishItem">Finish Item</Button>
+	</Grid>
 </UserControl>

@@ -13,7 +13,7 @@ namespace GyroScope.Data.Sides
         /// Establishing and initializing private backing
         /// variables for the class
         /// </summary>
-        /// 
+        private string name = "Aries Fries";
 
         /// <summary>
         /// The default Size of Aries Fries
@@ -75,6 +75,46 @@ namespace GyroScope.Data.Sides
                         throw new NotImplementedException();
                 }
             }
+        }
+
+        /// <summary>
+        /// The name of the class
+        /// </summary>
+        public override string Name
+        {
+            get
+            {
+                switch (Size)
+                {
+                    case Size.Small:
+                        return "Small " + name;
+                    case Size.Medium:
+                        return "Medium " + name;
+                    case Size.Large:
+                        return "Large " + name;
+                    default:
+                        throw new NotImplementedException();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Override of default ToString method
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+                switch (Size)
+                {
+                    case Size.Small:
+                        return "Small " + name;
+                    case Size.Medium:
+                        return "Medium " + name;
+                    case Size.Large:
+                        return "Large " + name;
+                    default:
+                        throw new NotImplementedException();
+                }           
         }
     }
 }

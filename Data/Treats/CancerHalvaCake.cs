@@ -20,5 +20,11 @@ namespace GyroScope.Data.Treats
         /// Override method for getting Price inherited from Treat base class
         /// </summary>
         public override decimal Price { get { return 3.00m; } }
+
+        public override string Name { get { return "Cancer Halva Cake"; } }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

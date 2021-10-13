@@ -19,5 +19,7 @@ namespace GyroScope.Data.Drinks
         /// Getter for Calories
         /// </summary>
         public abstract uint Calories { get; }
+
+        public abstract string Name { get; }
     }
 }

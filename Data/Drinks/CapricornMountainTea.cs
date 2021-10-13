@@ -41,7 +41,24 @@ namespace GyroScope.Data.Drinks
         /// Getter and setter for private backing variable honey
         /// </summary>
         public bool Honey { get { return honey; } set { honey = value; } }
-        
+
+        public override string Name
+        {
+            get { return "Capricorn Mountain Tea"; }
+        }
+
+        public override string ToString()
+        {
+            if(Honey)
+            {
+                return "Capricorn Mountain Tea";
+            }
+            else
+            {
+                return "Capricorn Mountain Tea No Honey";
+            }
+        }
+
 
     }
 }

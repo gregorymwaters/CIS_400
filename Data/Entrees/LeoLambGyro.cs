@@ -134,5 +134,14 @@ namespace GyroScope.Data.Entrees
                 return specialInstructions;
             }
         }
+
+        public override string Name
+        {
+            get {return "Leo Lamb Gyro";}
+        }
+        public override string ToString()
+        {
+            return "Leo Lamb Gyro";
+        }
     }
 }

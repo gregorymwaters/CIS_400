@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GyroScope.Data.Sides;
+using GyroScope.Data.Enums;
 
 namespace PointOfSale.ItemCustomizations
 {
@@ -20,9 +22,36 @@ namespace PointOfSale.ItemCustomizations
     /// </summary>
     public partial class SideCustomization : UserControl
     {
+        public Side Side;
+        public event EventHandler FinishSide;
         public SideCustomization()
         {
             InitializeComponent();
+        }
+
+        public void AddItem(Side side)
+        {
+            Side = side;
+            switch(side.Size)
+            {
+                case GyroScope.Data.Enums.Size.Small:
+                    SmallSideRadio.IsChecked = true;
+                    break;
+                case GyroScope.Data.Enums.Size.Medium:
+                    MediumSideRadio.IsChecked = true;
+                    break;
+                case GyroScope.Data.Enums.Size.Large:
+                    LargeSideRadio.IsChecked = true;
+                    break;
+            }
+        }
+
+        private void FinishItem(object sender, RoutedEventArgs e)
+        {
+            if ((bool)SmallSideRadio.IsChecked) Side.Size = GyroScope.Data.Enums.Size.Small;
+            if ((bool)MediumSideRadio.IsChecked) Side.Size = GyroScope.Data.Enums.Size.Medium;
+            if ((bool)LargeSideRadio.IsChecked) Side.Size = GyroScope.Data.Enums.Size.Large;
+            FinishSide?.Invoke(this, new EventArgs());
         }
     }
 }

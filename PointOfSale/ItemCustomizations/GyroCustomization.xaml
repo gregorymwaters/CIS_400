@@ -43,5 +43,6 @@
 			<CheckBox Name="WingSauceCheckbox" Margin="10,10">Wing Sauce</CheckBox>
 			
 		</ListBox>
+		<Button Grid.Column="3" Name="AddItemButton" Click="FinishItem">Finish Item</Button>
 	</Grid>
 </UserControl>

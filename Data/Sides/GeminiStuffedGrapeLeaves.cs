@@ -14,7 +14,7 @@ namespace GyroScope.Data.Sides
         /// variables for the class
         /// </summary>
         /// 
-
+        private string name = "Gemini Stuffed Grape Leaves";
         /// <summary>
         /// The default Size of Gemini Stuffed Grape Leaves
         /// </summary>
@@ -73,6 +73,39 @@ namespace GyroScope.Data.Sides
                     default:
                         throw new NotImplementedException();
                 }
+            }
+        }
+
+        public override string Name
+        {
+            get
+            {
+                switch (Size)
+                {
+                    case Size.Small:
+                        return "Small " + name;
+                    case Size.Medium:
+                        return "Medium " + name;
+                    case Size.Large:
+                        return "Large " + name;
+                    default:
+                        throw new NotImplementedException();
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            switch (Size)
+            {
+                case Size.Small:
+                    return "Small " + name;
+                case Size.Medium:
+                    return "Medium " + name;
+                case Size.Large:
+                    return "Large " + name;
+                default:
+                    throw new NotImplementedException();
             }
         }
     }

@@ -14,7 +14,7 @@ namespace GyroScope.Data.Sides
         /// variables for the class
         /// </summary>
         /// 
-
+        private string name = "Tarus Tabuleh";
         /// <summary>
         /// The default Size of Tarus Tabuleh
         /// </summary>
@@ -73,6 +73,46 @@ namespace GyroScope.Data.Sides
                     default:
                         throw new NotImplementedException();
                 }
+            }
+        }
+
+        /// <summary>
+        /// The name of the class
+        /// </summary>
+        public override string Name
+        {
+            get
+            {
+                switch (Size)
+                {
+                    case Size.Small:
+                        return "Small " + name;
+                    case Size.Medium:
+                        return "Medium " + name;
+                    case Size.Large:
+                        return "Large " + name;
+                    default:
+                        throw new NotImplementedException();
+                }
+            }
+        }
+
+        /// <summary>
+        /// ToString override
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            switch (Size)
+            {
+                case Size.Small:
+                    return "Small " + name;
+                case Size.Medium:
+                    return "Medium " + name;
+                case Size.Large:
+                    return "Large " + name;
+                default:
+                    throw new NotImplementedException();
             }
         }
     }
