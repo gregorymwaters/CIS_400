@@ -18,6 +18,10 @@ using GyroScope.Data.Drinks;
 using GyroScope.Data.Sides;
 using GyroScope.Data.Treats;
 using PointOfSale.ItemCustomizations;
+using GyroScope.Data;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+
 
 namespace PointOfSale
 {
@@ -34,6 +38,7 @@ namespace PointOfSale
         TeaCustomization tc;
         TreatsCustomization Tc;
         MainWindow mainWindow;
+        public Order currentOrder = new Order();
         public List<object> OrderItems = new List<object>();
         List<Drink> DrinkOrderItems = new List<Drink>();
         public MenuItemSelectionControl()
@@ -64,6 +69,7 @@ namespace PointOfSale
             tc.FinishTea += OnFinishItem;
             sc.FinishSide += OnFinishItem;
             Tc.FinishAI += OnFinishItem;
+            currentOrder.OCurrentOrder.CollectionChanged += CollectionChange;
             
 
         }
@@ -116,7 +122,8 @@ namespace PointOfSale
         {
             PiscesFishDish picesOrder = new PiscesFishDish();
             OrderItems.Add(picesOrder);
-            PropertyChanged?.Invoke(OrderItems, new PropertyChangedEventArgs("FishOrderItems"));
+            currentOrder.AddItem(picesOrder);
+            PropertyChanged?.Invoke(currentOrder, new PropertyChangedEventArgs("FishOrderItems"));
         }
 
         /// <summary>
@@ -193,7 +200,8 @@ namespace PointOfSale
         {
             CancerHalvaCake cancerOrder = new CancerHalvaCake();
             OrderItems.Add(cancerOrder);
-            PropertyChanged?.Invoke(OrderItems, new PropertyChangedEventArgs("CancerOrderItems"));
+            currentOrder.AddItem(cancerOrder);
+            PropertyChanged?.Invoke(currentOrder, new PropertyChangedEventArgs("CancerOrderItems"));
         }
 
         /// <summary>
@@ -222,6 +230,19 @@ namespace PointOfSale
             mainWindow.ChangeControl(tc);
         }
 
+        void CollectionChange(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                PropertyChanged?.Invoke(currentOrder, new PropertyChangedEventArgs("Item Added"));
+            }
+
+            if (e.Action == NotifyCollectionChangedAction.Remove)
+            {
+                PropertyChanged?.Invoke(currentOrder, new PropertyChangedEventArgs("Item Removed"));
+            }
+        }
+
 
         /// <summary>
         /// Event handler for "Finish Item" button found within each customization control
@@ -234,39 +255,58 @@ namespace PointOfSale
             if(sender is GyroCustomization _gc)
             {
                 OrderItems.Add(_gc.Gyro);
-                PropertyChanged?.Invoke(OrderItems, new PropertyChangedEventArgs("GyroOrderItems"));
+                currentOrder.AddItem(_gc.Gyro);
+                PropertyChanged?.Invoke(currentOrder, new PropertyChangedEventArgs("GyroOrderItems"));
             }
 
             if(sender is LibraLibationCustomization _llc)
             {
                 OrderItems.Add(_llc.Drink);
-                PropertyChanged?.Invoke(OrderItems, new PropertyChangedEventArgs("DrinkOrderItems"));
+                currentOrder.AddItem(_llc.Drink);
+                PropertyChanged?.Invoke(currentOrder, new PropertyChangedEventArgs("DrinkOrderItems"));
             }
 
             if(sender is TeaCustomization _cmt)
             {
                 OrderItems.Add(_cmt.Drink);
-                PropertyChanged?.Invoke(OrderItems, new PropertyChangedEventArgs("TeaOrderItems"));
+                currentOrder.AddItem(_cmt.Drink);
+                PropertyChanged?.Invoke(currentOrder, new PropertyChangedEventArgs("TeaOrderItems"));
             }
 
             if(sender is SideCustomization _sc)
             {
                 OrderItems.Add(_sc.Side);
-                PropertyChanged?.Invoke(OrderItems, new PropertyChangedEventArgs("SideOrderItems"));
+                currentOrder.AddItem(_sc.Side);
+                PropertyChanged?.Invoke(currentOrder, new PropertyChangedEventArgs("SideOrderItems"));
             }
 
             if(sender is TreatsCustomization _tc)
             {
                 OrderItems.Add(_tc.Ice);
-                PropertyChanged?.Invoke(OrderItems, new PropertyChangedEventArgs("TreatOrderItems"));
+                currentOrder.AddItem(_tc.Ice);
+                PropertyChanged?.Invoke(currentOrder, new PropertyChangedEventArgs("TreatOrderItems"));
             }
 
             mainWindow.ChangeControl(this);
         }
 
+        public void Remove(object sender, PropertyChangedEventArgs e)
+        {
+            currentOrder.Remove(sender as IMenuItem);
+            PropertyChanged?.Invoke(currentOrder, new PropertyChangedEventArgs("Order Change"));
+        }
+
         public void CompleteOrder()
         {
             OrderItems.Clear();
+            currentOrder.CompleteOrder();
+            PropertyChanged?.Invoke(currentOrder, new PropertyChangedEventArgs("Order Change"));
+        }
+
+        public void CancelOrder()
+        {
+            OrderItems.Clear();
+            currentOrder.CancelOrder();
         }
 
        

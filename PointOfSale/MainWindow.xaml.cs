@@ -36,6 +36,7 @@ namespace PointOfSale
             DataContext = this;
             Menu = new MenuItemSelectionControl(this);
             Menu.PropertyChanged += OrderSummary.OnPropertyChanged;
+            OrderSummary.PropertyChanged += Menu.Remove;
             CurrentControl = Menu;
             currentControl.Content = CurrentControl;
             
@@ -69,6 +70,7 @@ namespace PointOfSale
         private void CancelOrderButton_Click(object sender, RoutedEventArgs e)
         {
             Menu.OrderItems.Clear();
+            Menu.CancelOrder();
             OrderSummary.CancelOrder();
             currentControl.Content = Menu;
         }

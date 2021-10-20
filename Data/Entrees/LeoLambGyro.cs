@@ -11,7 +11,7 @@ namespace GyroScope.Data.Entrees
     /// <summary>
     /// Public class for menu item LeoLambGyro inherrites from Gyro parent class
     /// </summary>
-    public class LeoLambGyro : Gyro, INotifyPropertyChanged
+    public class LeoLambGyro : Gyro, INotifyPropertyChanged, IMenuItem
     {
         /// <summary>
         /// Establishing and initializing private backing

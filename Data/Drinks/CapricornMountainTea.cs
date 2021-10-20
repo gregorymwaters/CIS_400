@@ -10,7 +10,7 @@ namespace GyroScope.Data.Drinks
     /// <summary>
     /// Class definition for Capricorn Mountain Tea
     /// </summary>
-    public class CapricornMountainTea : Drink, INotifyPropertyChanged
+    public class CapricornMountainTea : Drink, INotifyPropertyChanged, IMenuItem
     {
         /// <summary>
         /// private backing variable for default setting
@@ -61,6 +61,8 @@ namespace GyroScope.Data.Drinks
                 return "Capricorn Mountain Tea No Honey";
             }
         }
+
+        public override List<string> SpecialInstructions { get { return new List<string>(); } }
 
 
     }

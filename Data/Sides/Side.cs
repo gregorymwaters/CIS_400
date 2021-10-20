@@ -10,7 +10,7 @@ namespace GyroScope.Data.Sides
     ///<summary>
     /// A base class for Sides
     /// </summary>
-    public abstract class Side
+    public abstract class Side : IMenuItem
     {
         ///<summary>
         /// Gets Calories for a Side
@@ -32,5 +32,7 @@ namespace GyroScope.Data.Sides
         public abstract decimal Price { get; }
 
         public abstract string Name { get; }
+
+        public abstract IEnumerable<string> SpecialInstructions { get; }
     }
 }

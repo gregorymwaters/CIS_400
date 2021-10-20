@@ -10,7 +10,7 @@ namespace GyroScope.Data.Entrees
     /// <summary>
     /// A base class for Entrees sold
     /// </summary>
-    public abstract class Entree : INotifyPropertyChanged
+    public abstract class Entree : INotifyPropertyChanged, IMenuItem
     {
         ///<summary>
         /// Price of the Entree
@@ -32,6 +32,7 @@ namespace GyroScope.Data.Entrees
         public event PropertyChangedEventHandler PropertyChanged;
 
         public abstract string Name { get; }
+
 
     }
 }

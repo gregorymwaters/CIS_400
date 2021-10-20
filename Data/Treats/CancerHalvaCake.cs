@@ -10,7 +10,7 @@ namespace GyroScope.Data.Treats
     /// Class definition for Cancer Havleh Cake
     /// Inherits from Treat
     /// </summary>
-    public class CancerHalvaCake : Treat
+    public class CancerHalvaCake : Treat, IMenuItem
     {
         /// <summary>
         /// Override method for Calories inherited from Treat base class
@@ -26,5 +26,7 @@ namespace GyroScope.Data.Treats
         {
             return Name;
         }
+
+        public override IEnumerable<string> SpecialInstructions { get { return new List<string>(); } }
     }
 }

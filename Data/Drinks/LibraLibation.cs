@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace GyroScope.Data.Drinks
 {
-    public class LibraLibation : Drink, INotifyPropertyChanged
+    public class LibraLibation : Drink, INotifyPropertyChanged, IMenuItem
     {
         /// <summary>
         /// Private backing variables for LibraLibation
@@ -103,5 +103,6 @@ namespace GyroScope.Data.Drinks
             return Name;
         }
 
+        public override IEnumerable<string> SpecialInstructions { get { return new List<string>(); } }
     }
 }

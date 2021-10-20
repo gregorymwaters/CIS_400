@@ -18,6 +18,7 @@ using GyroScope.Data.Drinks;
 using GyroScope.Data.Sides;
 using GyroScope.Data.Treats;
 using GyroScope.Data.Enums;
+using GyroScope.Data;
 
 namespace PointOfSale
 {
@@ -30,20 +31,30 @@ namespace PointOfSale
         /// Private testing variables to ensure behavior
         /// First is populating List property
         /// </summary>
-        private List<string> Order = new List<string>();
         private decimal Total = 0.0m;
+        private decimal SubTotal = 0.0m;
+        private decimal Tax = 0.0m;
 
         /// <summary>
         /// Stand in private variable for orderNumber integer
         /// </summary>
-        private int orderNum = 1;
+        private uint orderNum = 1;
 
         /// <summary>
         /// Stand in DateTime getter for testing purposes
         /// </summary>
         private string time = DateTime.Now.ToShortTimeString();
 
+        /// <summary>
+        /// Event handlers for property changed and remove item button
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler RemoveSelectedItem;
+
+        /// <summary>
+        /// Holds list binding for the ListBox to display the order
+        /// </summary>
+        private List<IMenuItem> orderItems;
 
         /// <summary>
         /// Main constructor of OrderSummaryControl class
@@ -55,6 +66,7 @@ namespace PointOfSale
             this.DataContext = this;
             PropertyChanged += OnPropertyChanged;
             TextPopulate();
+            orderItems = new List<IMenuItem>();
         }
 
         /// <summary>
@@ -62,26 +74,40 @@ namespace PointOfSale
         /// </summary>
         public void TextPopulate()
         {
-            OrderNumberBox.Text = "Order Number " + orderNum + "\n" + DateTime.Now.ToShortTimeString(); 
-            TotalTextBox.Items.Add("SubTotal " + Total);
+            OrderNumberBox.Text = "Order Number " + orderNum + "\n" + DateTime.Now.ToString(); 
+            TotalTextBox.Items.Add("SubTotal $" + SubTotal);
+            TotalTextBox.Items.Add("Tax $" + Tax);
+            TotalTextBox.Items.Add("Total $" + Total);
         }
 
+        /// <summary>
+        /// Handler for CancelOrder button
+        /// Clears all lists and updates text
+        /// </summary>
         public void CancelOrder()
         {
             OrderTextBox.Items.Clear();
             TotalTextBox.Items.Clear();
+            orderItems.Clear();
             TextPopulate();
-            if (orderNum > 1)
-            {
-                orderNum--;
-            }
+
         }
 
+        /// <summary>
+        /// Handler for CompleteOrder button
+        /// Clears all lists and updates text
+        /// </summary>
         public void CompleteOrder()
         {
             OrderTextBox.Items.Clear();
             TotalTextBox.Items.Clear();
-            orderNum++;
+            orderItems.Clear();
+            TextPopulate();
+        }
+
+        public void OnCollectionChanged(object sender, CollectionChangeEventArgs e)
+        {
+
         }
         /// <summary>
         /// Updater method called when master OrderList is modified in the ItemCustomization namespace controllers
@@ -97,19 +123,22 @@ namespace PointOfSale
             TotalTextBox.Items.Clear();
 
             ///Checks if the sender is IEnumerable, in this case a List
-            if (sender is IEnumerable<object> list)
+            if (sender is Order order)
             {
                 ///Sets decimal that controls the subtotal to 0.0 prior to the loop
-                Total = 0.0m;
+                orderNum = order.Number;
+                Total = order.Total;
+                SubTotal = order.SubTotal;
+                Tax = order.Tax;
 
                 ///Loops through the IEnermerable object checking to see the type of each object
-                foreach (object x in list)
+                foreach (object x in order.CurrentOrder)
                 {         
                     if(x is Entree entree )
                     {
+                        orderItems.Add(x as IMenuItem);
                         ///Adds the name to the text box
-                        OrderTextBox.Items.Add(entree.Name);
-                        Total += entree.Price;
+                        OrderTextBox.Items.Add(entree);
                         ///Loops through IEnermrable List<string> of special instructions for printing
                         for(int i = 0;  i < entree.SpecialInstructions.Count(); i++)
                         {
@@ -119,26 +148,36 @@ namespace PointOfSale
 
                     if (x is Drink drink)
                     {
-                        Total += drink.Price;
-                        OrderTextBox.Items.Add(drink.Name);
+                        orderItems.Add(x as IMenuItem);
+                        OrderTextBox.Items.Add(drink);
                     }
 
                     if (x is Side side)
                     {
-                        Total += side.Price;
-                        OrderTextBox.Items.Add(side.Name);
+                        orderItems.Add(x as IMenuItem);
+                        OrderTextBox.Items.Add(side);
                     }
 
                     if(x is Treat treat)
                     {
-                        Total += treat.Price;
-                        OrderTextBox.Items.Add(treat.Name);
+                        orderItems.Add(x as IMenuItem);
+                        OrderTextBox.Items.Add(treat);
                     }
                 }
             }
 
 
             TextPopulate();
+        }
+
+        /// <summary>
+        /// Event router for removal of items from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveSelected_Click(object sender, RoutedEventArgs e)
+        {
+            PropertyChanged?.Invoke(OrderTextBox.SelectedItem, new PropertyChangedEventArgs("Remove Item"));
         }
     }
 }

@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace GyroScope.Data.Sides
 {
-    public class TaurusTabuleh : Side, INotifyPropertyChanged
+    public class TaurusTabuleh : Side, INotifyPropertyChanged, IMenuItem
     {
         /// <summary>
         /// Establishing and initializing private backing
@@ -118,5 +118,7 @@ namespace GyroScope.Data.Sides
                     throw new NotImplementedException();
             }
         }
+
+        public override IEnumerable<string> SpecialInstructions { get { return new List<string>(); } }
     }
 }

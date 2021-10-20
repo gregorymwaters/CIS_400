@@ -11,8 +11,10 @@ namespace GyroScope.Data.Treats
     /// <summary>
     /// A class representing "Aquarius Ice" - an itialian iced soda
     /// </summary>
-    public class AquariusIce : Treat, INotifyPropertyChanged
+    public class AquariusIce : Treat, INotifyPropertyChanged, IMenuItem
     {
+        private AquariusIceFlavor flavor = AquariusIceFlavor.Lemon;
+        private Size size = Size.Small;
         /// <summary>
         /// The name of AquariousIce object instance
         /// </summary>
@@ -63,12 +65,12 @@ namespace GyroScope.Data.Treats
         /// <summary>
         /// The size of this Aquarius Ice    
         /// </summary>
-        public Size Size { get { return Size; } set { Size = value; PropertyChanged?.Invoke(Size, new PropertyChangedEventArgs("Size Changed")); } }
+        public Size Size { get { return size; } set { size = value;} }
 
         /// <summary>
         /// The flavor of this Aquarius Ice
         /// </summary>
-        public AquariusIceFlavor Flavor { get { return Flavor; } set { PropertyChanged?.Invoke(Flavor, new PropertyChangedEventArgs("Flavor Changed")); } }
+        public AquariusIceFlavor Flavor { get { return flavor; } set { flavor = value;} }
 
         /// <summary>
         /// The calories of this Aquarius Ice
@@ -120,5 +122,7 @@ namespace GyroScope.Data.Treats
         {
             return Name;
         }
+
+        public override IEnumerable<string> SpecialInstructions { get { return new List<string>(); } }
     }
 }

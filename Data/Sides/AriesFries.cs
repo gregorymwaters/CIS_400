@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace GyroScope.Data.Sides
 {
-    public class AriesFries : Side, INotifyPropertyChanged
+    public class AriesFries : Side, INotifyPropertyChanged, IMenuItem
     {
         /// <summary>
         /// Establishing and initializing private backing
@@ -119,5 +119,7 @@ namespace GyroScope.Data.Sides
                         throw new NotImplementedException();
                 }           
         }
+
+        public override IEnumerable<string> SpecialInstructions { get { return new List<string>(); } }
     }
 }

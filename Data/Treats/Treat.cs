@@ -10,7 +10,7 @@ namespace GyroScope.Data.Treats
     /// <summary>
     /// Base class definition for Treat namespace menu items
     /// </summary>
-    public abstract class Treat
+    public abstract class Treat : IMenuItem
     {
         /// <summary>
         /// Abstract getter for Price from an object
@@ -22,5 +22,7 @@ namespace GyroScope.Data.Treats
         public abstract uint Calories { get; }
 
         public abstract string Name { get; }
+
+        public abstract IEnumerable<string> SpecialInstructions { get; }
     }
 }

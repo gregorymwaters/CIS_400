@@ -9,7 +9,7 @@ namespace GyroScope.Data.Drinks
     /// <summary>
     /// Abstract base class for Drink menu items
     /// </summary>
-    public abstract class Drink
+    public abstract class Drink: IMenuItem
     {
         /// <summary>
         /// Getter for Price
@@ -21,5 +21,7 @@ namespace GyroScope.Data.Drinks
         public abstract uint Calories { get; }
 
         public abstract string Name { get; }
+
+        public abstract IEnumerable<string> SpecialInstructions { get; }
     }
 }

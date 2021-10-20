@@ -12,7 +12,7 @@ namespace GyroScope.Data.Entrees
     /// Abstract base class for all Gyro type Entree objects on the menu
     /// Inherits from Entree base class
     /// </summary>
-    public abstract class Gyro : Entree, INotifyPropertyChanged
+    public abstract class Gyro : Entree, INotifyPropertyChanged, IMenuItem
     {
         /// <summary>
         /// Special Instructions All Ingredients

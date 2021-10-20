@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace GyroScope.Data.Entrees
 {
-    public class VirgoClassicGyro : Gyro, INotifyPropertyChanged
+    public class VirgoClassicGyro : Gyro, INotifyPropertyChanged, IMenuItem
     {
         /// <summary>
         /// Establishing and initializing private backing
