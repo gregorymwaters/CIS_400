@@ -298,7 +298,7 @@ namespace PointOfSale
 
         public void CompleteOrder()
         {
-            OrderItems.Clear();
+            //OrderItems.Clear();
             currentOrder.CompleteOrder();
             PropertyChanged?.Invoke(currentOrder, new PropertyChangedEventArgs("Order Change"));
         }

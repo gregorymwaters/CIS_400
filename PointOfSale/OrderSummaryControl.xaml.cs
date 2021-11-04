@@ -19,6 +19,7 @@ using GyroScope.Data.Sides;
 using GyroScope.Data.Treats;
 using GyroScope.Data.Enums;
 using GyroScope.Data;
+using RoundRegister;
 
 namespace PointOfSale
 {
@@ -99,6 +100,19 @@ namespace PointOfSale
         /// </summary>
         public void CompleteOrder()
         {
+            RecieptPrinter.PrintLine("Order Number " + orderNum.ToString());
+            RecieptPrinter.PrintLine(DateTime.Now.ToString());
+            for (int i = 0; i < OrderTextBox.Items.Count; i++)
+            {
+                RecieptPrinter.PrintLine(OrderTextBox.Items[i].ToString());
+            }
+
+            for (int j = 0; j < TotalTextBox.Items.Count; j++)
+            {
+                RecieptPrinter.PrintLine(TotalTextBox.Items[j].ToString());
+            }
+            RecieptPrinter.CutTape();
+
             OrderTextBox.Items.Clear();
             TotalTextBox.Items.Clear();
             orderItems.Clear();
@@ -127,9 +141,9 @@ namespace PointOfSale
             {
                 ///Sets decimal that controls the subtotal to 0.0 prior to the loop
                 orderNum = order.Number;
-                Total = order.Total;
-                SubTotal = order.SubTotal;
-                Tax = order.Tax;
+                Total = Math.Round(order.Total, 2);
+                SubTotal = Math.Round(order.SubTotal,2);
+                Tax = Math.Round(order.Tax, 2);
 
                 ///Loops through the IEnermerable object checking to see the type of each object
                 foreach (object x in order.CurrentOrder)
@@ -178,6 +192,14 @@ namespace PointOfSale
         private void RemoveSelected_Click(object sender, RoutedEventArgs e)
         {
             PropertyChanged?.Invoke(OrderTextBox.SelectedItem, new PropertyChangedEventArgs("Remove Item"));
+        }
+
+        public decimal total
+        {
+            get
+            {
+                return Total;
+            }
         }
     }
 }

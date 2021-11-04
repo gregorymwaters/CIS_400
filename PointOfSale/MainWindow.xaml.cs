@@ -26,6 +26,8 @@ namespace PointOfSale
         public event PropertyChangedEventHandler PropertyChanged;
         public MenuItemSelectionControl Menu;
         public OrderSummaryControl Order;
+        public PaymentOptions Options;
+        public CashPayment CashPay;
 
         /// <summary>
         /// Main Window hook, establishes control context for display
@@ -35,8 +37,13 @@ namespace PointOfSale
             InitializeComponent();
             DataContext = this;
             Menu = new MenuItemSelectionControl(this);
+            Options = new PaymentOptions();
+            CashPay = new CashPayment();
             Menu.PropertyChanged += OrderSummary.OnPropertyChanged;
             OrderSummary.PropertyChanged += Menu.Remove;
+            Options.PaymentProcess += Complete;
+            Options.CashProcess += Cash;
+            CashPay.FinishOrderEvent += Complete;
             CurrentControl = Menu;
             currentControl.Content = CurrentControl;
             
@@ -83,9 +90,20 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void CompleteButton_Click(object sender, RoutedEventArgs e)
         {
-            Menu.CompleteOrder();
+            currentControl.Content = Options;
+        }
+
+        private void Complete(object sender, EventArgs e)
+        {
             OrderSummary.CompleteOrder();
+            Menu.CompleteOrder();
             currentControl.Content = Menu;
+        }
+
+        private void Cash(object sender, EventArgs e)
+        {
+            CashPay.TotalInput((double)OrderSummary.total);
+            currentControl.Content = CashPay;
         }
     }
 }
